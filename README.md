@@ -16,9 +16,9 @@ Usage: `$(selector).inviewport(options)`, where options is an object which may c
     
 	To execute a function call one time when in view.
    
-	if(jQuery("#target").length > 0) {	
+	if($("#target").length > 0) {	
 	    var customclass = 'myClassName';
-		jQuery("#target").one( customclass, function( event ) {
+		$("#target").one( customclass, function( event ) {
 			//execute a function call or some code here
 		}).inviewport({ 
 		    threshold: 100, 
@@ -28,9 +28,9 @@ Usage: `$(selector).inviewport(options)`, where options is an object which may c
 	
 	To execute a function call continuously when in view.
 
-	if(jQuery("#element").length > 0) { 
+	if($("#target").length > 0) { 
 	    var customclass = 'myClassName';
-		jQuery("#element").on( customclass, function( event ) {
+		$("#target").on( customclass, function( event ) {
 			//execute a function call or some code here
 		}).inviewport({ 
 		    threshold: 100, 
