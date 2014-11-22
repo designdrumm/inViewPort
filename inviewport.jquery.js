@@ -1,4 +1,20 @@
 /*jslint browser: true, indent: 2 */
+/*
+Example Usage:
+	To execute a function call once when in view
+	if(jQuery("#element").length > 0) {		
+		jQuery("#element").one( "myClassName", function( event ) {
+			//execute a function call or some code here
+		}).inviewport({ threshold: 100, className: 'myClassName' });
+	}
+	
+	To execute a function call continuously when in view
+	if(jQuery("#element").length > 0) {		
+		jQuery("#element").trigger( "myClassName", function( event ) {
+			//execute a function call or some code here
+		}).inviewport({ threshold: 100, className: 'myClassName' });
+	}
+*/
 (function ($) { 
 	'use strict';
 	$.fn.inviewport = function (options) {
@@ -6,7 +22,7 @@
 		'minPercentageInView' : 100, 
 		'standardClassName': 'in-view', 
 		}, options);
-		this.each(function () {
+		this.each(function (i, e) {
 			var $this = $(this), 
 			$win = $(window), 
 			changed = false, 
@@ -24,11 +40,14 @@
 				elPosX = elLeft + xMin, 
 				elPosY = elTop + yMin; 
 				if (elLeft > winLeft && winPosX > elPosX && elTop > winTop && winPosY > elPosY) {
-					$this.addClass(c);
+					if(!$this.hasClass(c)) { 
+						$this.addClass(c);
+					}
+					$this.trigger(c);
 				} else {
 					if($this.hasClass(c)) { 
 						$this.removeClass(c);
-					}		 
+					}
 				}
 			};
 			$win.on('ready', isVisible())
