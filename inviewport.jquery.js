@@ -10,7 +10,7 @@ Example Usage:
 	
 	To execute a function call continuously when in view
 	if(jQuery("#element").length > 0) {		
-		jQuery("#element").trigger( "myClassName", function( event ) {
+		jQuery("#element").on( "myClassName", function( event ) {
 			//execute a function call or some code here
 		}).inviewport({ threshold: 100, className: 'myClassName' });
 	}
